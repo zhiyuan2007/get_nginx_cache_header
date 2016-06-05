@@ -1,0 +1,37 @@
+h1. a nginx tool for read cache header info from cache file 
+<pre>
+usage:
+	get_cache_header  [-f read header direct from file, not using key] [-k key if not given -f] [ -d cache_path default value: /usr/local/nginx/data/cache]
+	ignore -k option if given both -f option and -k option
+</pre>
+
+<pre>
+example:
+1 get cache info from cache key [cache path default value is /usr/local/nginx/data/cache]
+[root@cdn01v get_nginx_cache_header]#./get_cache_header  -k gzip-static.qiyun.360.cn/static/highstock_e340fce.js
+key:gzip-static.qiyun.360.cn/static/highstock_e340fce.js
+md5:14ca5b2f15aedaa829b94648350e6802
+filename:/usr/local/nginx/data/cache/02/68/14ca5b2f15aedaa829b94648350e6802
+version:3
+valid_sec:1467536288, Sun Jul  3 16:58:08 2016
+last_modified:1464771964, Wed Jun  1 17:06:04 2016
+date:1464944288, Fri Jun  3 16:58:08 2016
+cache time span:2592000
+crc32:1611210792
+valid_msec:0
+header_start:203
+body_start:676
+
+2. get cache info from file
+[root@cdn01v get_nginx_cache_header]# ./get_cache_header -f /usr/local/nginx/data/cache/02/68/14ca5b2f15aedaa829b94648350e6802
+filename:/usr/local/nginx/data/cache/02/68/14ca5b2f15aedaa829b94648350e6802
+version:3
+valid_sec:1467536288, Sun Jul  3 16:58:08 2016
+last_modified:1464771964, Wed Jun  1 17:06:04 2016
+date:1464944288, Fri Jun  3 16:58:08 2016
+cache time span:2592000
+crc32:1611210792
+valid_msec:0
+header_start:203
+body_start:676
+</pre>
